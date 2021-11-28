@@ -8,13 +8,11 @@ import "./index.css";
 const ProductDetail = () => {
     const dispatch=useDispatch();
     const {productId}=useParams();
-    console.log("Param:",productId);
     const productItem=useSelector(state=>state.products.productItem);
     console.log("productItem:",productItem)
     const fetchProducts=async()=>{
         const response=await axios.get(`https://fakestoreapi.com/products/${productId}`)
         .catch((err)=>console.log("ERR9:",err));
-        console.log("responsePD:",response);
         const action=selectedProducts(response.data);
         dispatch(action)
     }
